@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { collection, query, where, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
 import moment from "moment";
 
@@ -10,7 +10,7 @@ export const useTasks = (selectedProject) => {
     useEffect(() => {
         let taskQuery = query(
             collection(db, "tasks"),
-            where("userId", "==", "b46d6cd2-d92b-4999-864b-2aeaf2cbf998")
+            where("userid", "==", "b46d6cd2-d92b-4999-864b-2aeaf2cbf998")
         );
 
         if (selectedProject) {
@@ -44,19 +44,18 @@ export const useTasks = (selectedProject) => {
     return { tasks, archivedTasks };
 };
 
-
 export const useProjects = () => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        firebase
-        .firestore()
-        .collection('projects')
-        .where('userId', '==', 'b46d6cd2-d92b-4999-864b-2aeaf2cbf998')
-        .orderBy('projectId')
-        .get()
-        .then(snapshot => {
-            const allProjects = snapshot.docs.map(project => ({
+        const projectQuery = query(
+            collection(db, 'projects'),
+            where('userid', '==', 'b46d6cd2-d92b-4999-864b-2aeaf2cbf998'),
+            orderBy('projectid'),
+        );
+
+        const unsubscribe = onSnapshot(projectQuery, (snapshot) => {
+            const allProjects = snapshot.docs.map((project) => ({
                 ...project.data(),
                 docId: project.id,
             }));
@@ -65,7 +64,9 @@ export const useProjects = () => {
                 setProjects(allProjects);
             }
         });
+
+        return () => unsubscribe;
     }, [projects]);
 
-    return { projects, setProjects }
+    return { projects, setProjects };
 };
