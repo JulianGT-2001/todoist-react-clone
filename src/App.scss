@@ -182,7 +182,7 @@ header {
                         @include va;
 
                         list-style-type: none;
-                        cursor:pointer;
+                        cursor: pointer;
                         width: 30px;
                         height: 30px;
                         text-align: center;
@@ -286,7 +286,7 @@ header {
         padding-left: 3px;
     }
 
-    &__projects {
+    &__project {
         @include va('left');
     }
 
@@ -323,36 +323,132 @@ header {
 
     &__generic {
         li {
+            padding: 10px 0 10px 10px;
             list-style-type: none;
             color: #333;
             display: flex;
             cursor: pointer;
             line-height: 1.50;
             font-size: 15px;
-            padding-left: 0;
-            padding-right: 0;
     
-            div:nth-child(1) {
-                display: flex;
-                padding: 10px 0 10px 10px;
-                width: 100%;
-        
-                span:first-of-type {
-                    margin-right: 10px;
-                    display: flex;
-                    align-items: center;
-        
-                    svg {
+            span:first-of-type {
+                margin-right: 10px;
+    
+                svg {
                     width: 18px;
                     height: 18px;
                     color: #555;
-                    }
                 }
             }
     
             &.active, &:hover {
                 font-weight: bold;
                 background-color: white;
+            }
+        }
+    }
+}
+
+/* Show Confirm Delete
+    ============================================== */
+
+.project-delete-modal {
+    position: relative;
+
+    &__inner {
+        @include box-overlay();
+        z-index: 99;
+        width: 200px;
+        padding: 10px;
+        top: 10px;
+        right: 0;
+        background-color: white;
+
+        p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            line-height: normal;
+            font-weight: normal;
+            font-size: 15px;
+        }
+
+        button {
+            @include btn('50px');
+        }
+        span {
+            @include cancel();
+            font-weight: normal;
+        }
+    }
+}
+
+/* Main Content
+    ============================================== */
+
+.content {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto;
+    max-width: 922px;
+    margin: auto;
+}
+
+/* Tasks
+    ============================================== */
+
+.tasks {
+    width: 656px;
+    background-color: white;
+    margin-left: 266px;
+    border-right: $generic-border;
+    min-height: calc(100vh);
+    vertical-align: top;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 80px;
+    padding-bottom: 84px;
+
+    @include mq('900px') {
+        margin-left: 0;
+        width: auto;
+    }
+
+    h2 {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 0 30px 20px 0;
+    }
+
+    .add-task {
+        margin-top: 20px;
+    }
+
+    &__list li {
+        display: flex;
+        line-height: 18px;
+        color: #333;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 14px;
+        list-style-type: none;
+        border-bottom: 1px solid #f0f0f0;
+
+        .checkbox-holder {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 16px;
+
+            .checkbox {
+                cursor: pointer;
+                border-color: gray;
+                color: #3434;
+                height: 16px;
+                width: 16px;
+                display: block;
+                border: 1px solid gray;
+                border-radius: 16px;
             }
         }
     }

@@ -11,21 +11,21 @@ export const Projects = ({ activeValue = null }) => {
         projects &&
         projects.map(project => (
             <li
-                key={project.projectId}
+                key={project.projectid}
                 data-doc-id={project.docId}
                 data-testid="project-action"
                 className={
-                    active === project.projectId
+                    active === project.projectid
                     ? 'active sidebar__project'
                     : 'sidebar__project'
                 }
-                onK={() => {
-                    setActive(project.projectId);
-                    setSelectedProject(project.projectId);
+                onKeyDown={() => {
+                    setActive(project.projectid);
+                    setSelectedProject(project.projectid);
                 }}
                 onClick={() => {
-                    setActive(project.projectId);
-                    setSelectedProject(project.projectId);
+                    setActive(project.projectid);
+                    setSelectedProject(project.projectid);
                 }}
             >
                 <IndividualProject project={project} />

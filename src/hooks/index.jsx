@@ -31,10 +31,16 @@ export const useTasks = (selectedProject) => {
             }));
 
             setTasks(
-                newTasks.filter((task) => task.archived !== true)
+                selectedProject === 'NEXT_7'
+                    ? newTasks.filter(
+                        task => 
+                            moment(task.date, 'DD/MM/YYYY').diff(moment(), 'days') <= 7 &&
+                            task.archived !== true
+                    )
+                    : newTasks.filter((task) => task.archived !== true)
             );
             setArchivedTasks(
-                newTasks.filter((task) => task.archived === true)
+                newTasks.filter((task) => task.archived !== false)
             );
         });
 
@@ -53,6 +59,7 @@ export const useProjects = () => {
             where('userid', '==', 'b46d6cd2-d92b-4999-864b-2aeaf2cbf998'),
             orderBy('projectid'),
         );
+
 
         const unsubscribe = onSnapshot(projectQuery, (snapshot) => {
             const allProjects = snapshot.docs.map((project) => ({

@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useProjectsValue, useSelectedProjectValue } from '../context';
 import { db } from '../firebase';
-import { deleteDoc } from 'firebase/firestore';
-import { doc } from 'firebase/firestore/lite';
+import { deleteDoc, doc } from 'firebase/firestore';
 
 export const IndividualProject = ({ project }) => {
     const [showConfirm, setShowConfirm] = useState(false);
     const { projects, setProjects } = useProjectsValue();
     const { setSelectedProject } = useSelectedProjectValue();
-
+    
     const deleteProject = docId => {
         deleteDoc(doc(db, "projects", docId)).then(() => {
             setProjects([...projects]);
             setSelectedProject('INBOX');
-        })
-    }
+        }).catch(error => {
+            console.error('Error deleting project:', error);
+        });
+    };
 
     return (
         <>
-            <span className="sidebar__dot">➡️</span>
+            <span className="sidebar__dot">&#x2022;</span>
             <span className="sidebar__project-name">{project.name}</span>
             <span 
                 className="sidebar__project-delete" 
@@ -32,8 +33,8 @@ export const IndividualProject = ({ project }) => {
                             <p>Are you sure you want to delete this project?</p>
                             <button type='button' onClick={() => deleteProject(project.docId)}>
                                 Delete
-                                <span onClick={() => setShowConfirm(!showConfirm)}>Cancel</span>
                             </button>
+                            <span onClick={() => setShowConfirm(!showConfirm)}>Cancel</span>
                         </div>
                     </div>
                 )}
