@@ -92,6 +92,11 @@ $generic-bg: #db4c3f;
     margin: 2px 5px;
 }
 
+@mixin transparent-button() {
+    background-color: transparent;
+    border: 0;
+}
+
 @mixin task-item() {
     list-style-type: none;
     display: flex;
@@ -197,11 +202,29 @@ header {
                         &.settings__add {
                             margin-right: 15px;
                             font-size: 30px;
+
+                            button {
+                                @include transparent-button();
+                                color: white;
+                                cursor: pointer;
+                            }
                         }
 
-                        &.settings__dark-mode svg {
-                            width: 20px;
-                            height: 20px;
+                        &.settings__darkmode {
+
+                            button {
+                                @include transparent-button();
+                                color: white;
+                                cursor: pointer;
+                                display: flex;
+
+                                svg {
+                                    width: 20px;
+                                    height: 20px;
+                                    
+                                }
+                            }
+                            
                         }
                     }
                 }
@@ -233,13 +256,19 @@ header {
         padding-right: 15px;
 
         &:hover .sidebar__project-delete {
-            display: block;
+            display: flex;
         }
     }
 
     &__project {
         padding: 5px 0;
         cursor: pointer;
+
+        div:nth-child(1) {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
 
         &-delete {
             margin-left: auto;
@@ -373,7 +402,7 @@ header {
         }
 
         button {
-            @include btn(50px);
+            @include btn('50px');
         }
         span {
             @include cancel();
@@ -533,7 +562,7 @@ header {
     }
 
     &__submit {
-        @include btn(90px);
+        @include btn('90px');
     }
 }
 
@@ -613,7 +642,7 @@ header {
     }
 
     &__submit {
-        @include btn(100px);
+        @include btn('100px');
     }
 
     &__cancel {
