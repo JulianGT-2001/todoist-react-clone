@@ -252,19 +252,18 @@ header {
     }
 
     li {
-        padding-left: 10px;
-        padding-right: 15px;
-
         &:hover .sidebar__project-delete {
             display: flex;
         }
     }
 
     &__project {
-        padding: 5px 0;
         cursor: pointer;
-
+        
         div:nth-child(1) {
+            padding: 5px 0;
+            padding-left: 10px;
+            padding-right: 15px;
             width: 100%;
             display: flex;
             align-items: center;
@@ -352,21 +351,29 @@ header {
 
     &__generic {
         li {
-            padding: 10px 0 10px 10px;
             list-style-type: none;
             color: #333;
             display: flex;
             cursor: pointer;
             line-height: 1.50;
             font-size: 15px;
-    
-            span:first-of-type {
-                margin-right: 10px;
-    
-                svg {
-                    width: 18px;
-                    height: 18px;
-                    color: #555;
+            padding-left: 0;
+            padding-right: 0;
+
+            div:nth-child(1) {
+                display: flex;
+                padding: 10px 0 10px 10px;
+                width: 100%;
+                span:first-of-type {
+                    margin-right: 10px;
+                    display: flex;
+                    align-items: center;
+        
+                    svg {
+                        width: 18px;
+                        height: 18px;
+                        color: #555;
+                    }
                 }
             }
     
@@ -596,12 +603,20 @@ header {
 
     &__list li {
         @include task-item();
+        padding: 0;
 
-        span:first-of-type {
-            margin-right: 10px;
+        div:nth-child(1) {
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            align-items: center;
 
-            svg {
-                fill: grey;
+            span:first-of-type {
+                margin-right: 10px;
+    
+                svg {
+                    fill: grey;
+                }
             }
         }
     }
@@ -613,9 +628,15 @@ header {
 .project-overlay {
     @include box-overlay();
     background-color: white;
+    padding: 0;
 
     &__list li {
         @include task-item();
+
+        div:nth-child(1) {
+            width: 100%;
+            padding: 10px;
+        }
     }
 }
 
