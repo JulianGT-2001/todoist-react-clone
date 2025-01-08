@@ -2,7 +2,7 @@ import React from "react";
 import { db } from '../firebase'
 import { doc, updateDoc } from "firebase/firestore";
 
-export const Checkbox = ({id}) => {
+export const Checkbox = ({id, taskDesc }) => {
     
     const archiveTask = (id) => {
         const taskDoc = doc(db, 'tasks', id);
@@ -17,6 +17,7 @@ export const Checkbox = ({id}) => {
             data-testid="checkbox-action"
             onClick={() => archiveTask(id)}
             onKeyDown={() => archiveTask(id)}
+            aria-label={`Mark ${taskDesc} as done?`}
             role="button"
             tabIndex={0}
         >
