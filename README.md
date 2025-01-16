@@ -1,6 +1,6 @@
 # TODOIST REACT CLONE
 
-The porpose of this repository is build a Todoist clone, the most useful, quickly and pretty Web Application for task management. Builded with the most popular library/framework of JavaScript, React. In this project handled additional technologies like **SCSS** and not relational database, **Firebase**.
+The purpose of this repository is build a Todoist clone, the most useful, quickly and pretty Web Application for task management. Builded with the most popular library/framework of JavaScript, React. In this project handled additional technologies like **SCSS** and not relational database, **Firebase**.
 
 ## 🤚 Utility
 
