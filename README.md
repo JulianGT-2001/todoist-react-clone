@@ -32,6 +32,10 @@ The porpose of this repository is build a Todoist clone, the most useful, quickl
     npm start
     ```
 
+## 📄 Licence
+
+This project is licensed under the MIT License, which permits free use, modification, and distribution, provided the appropriate copyright notice is maintained.
+
 ## 📄 References
 
 This proyect was builded basing in Youtube tutorial of **[freeCodeCamp.org](https://www.youtube.com/@freecodecamp)**.
