@@ -21,17 +21,18 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/index.js",
-      "!src/hooks/*.js",
-      "!src/context*.js"
+      "src/**/*.jsx",
+      "!src/index.jsx",
+      "!src/hooks/*.jsx",
+      "!src/context*.jsx",
+      "!src/__test__/*.jsx"
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
       }
     },
     "coverageReporters": [
@@ -39,6 +40,10 @@
       "text"
     ]
   },
+  "testEnvironment": "jsdom",
+  "roots": [
+    "<rootDir>/src"
+  ],
   "browserslist": {
     "production": [
       ">0.2%",

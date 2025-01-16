@@ -61,7 +61,7 @@ export const AddTask = ({
                     className="add-task__shallow"
                     data-testid="show-main-action"
                     onClick={() => setShowMain(!showMain)}
-                    onkeyDown={() => setShowMain(!showMain)}
+                    onKeyDown={() => setShowMain(!showMain)}
                     tabIndex={0}
                     aria-label="Add task"
                     role="button"
